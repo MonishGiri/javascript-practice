@@ -31,6 +31,28 @@ let myObj = {
 const myFunction = function (){
     console.log("Hello World");
 }
-console.log(typeof myObj);
-console.log(typeof null); // Object
+// console.log(typeof myObj);
+// console.log(typeof null); // Object
 
+/* ***************** MEMORY ***********************/
+
+// Stack(Primitive) => gives copy  , Heap(Non Primitive) => gives original value
+
+let myName = "Monish";
+let anotherName = "Sahil";
+anotherName = "Sushil";
+
+console.log(myName);
+console.log(anotherName);
+
+let userOne = {
+    email: "monish@gmail.com",
+    upi: "mg@ybl"
+}
+
+let userTwo = userOne;
+
+userTwo.email = "mg@gmail.com"
+
+console.log(userOne.email);
+console.log(userTwo.email);
