@@ -49,3 +49,34 @@ console.log(Object.entries(tinderUser));
 console.log(tinderUser.hasOwnProperty('isLoggedIn'));
 console.log(tinderUser.hasOwnProperty('isLogged'));
 
+// object destructuring
+
+const course = {
+    courseName: "Java course",
+    price: "555",
+    courseInstructor: "Monish Giri"
+}
+
+// course.courseInstructor;
+// const {courseInstructor} = course;
+const {courseInstructor : instructor} = course; // now we can use instructor to acess courseInstructor
+
+// console.log(instructor);
+
+// in react
+// const navbar = ({company}) =>{
+
+// }
+// navbar(company = "Monish")
+
+// in Json format
+// {
+//     "name": "monish",
+//     "courseName": "java in hindi",
+//     "price": 'free'
+// }
+
+[
+    {},
+    {}
+]
