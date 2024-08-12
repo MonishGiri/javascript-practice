@@ -33,3 +33,32 @@ buttons.forEach((button) => {
 
 
 ```
+## Project 2 Solution
+
+``` javascript
+// this case will give you empty
+//const height = parseInt(document.querySelector('#height').value);
+
+const form = document.querySelector('form');
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const height = parseInt(document.querySelector('#height').value);
+  const weight = parseInt(document.querySelector('#weight').value);
+  const results = document.querySelector('#results');
+
+  if (height === '' || height < 0 || isNaN(height)) {
+    results.innerHTML = `Please give a valid height ${height}`;
+  } else if (weight === '' || weight < 0 || isNaN(weight)) {
+    results.innerHTML = `Please give a valid weight ${weight}`;
+  } else {
+    const bmi = (weight / ((height * height) / 10000)).toFixed(2);
+    let weightguide;
+    if (bmi < 18.6) weightguide = 'Under Weight';
+    else if (bmi < 24.9) weightguide = 'Normal Range';
+    else weightguide = 'Overweight';
+    results.innerHTML = `<span>${bmi} ${weightguide}</span>`;
+  }
+});
+
+```
