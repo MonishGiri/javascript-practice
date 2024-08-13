@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+</style>
+<body>
+    
+    <div class="card" style="display: none;">
+        <img src="" alt="Avatar" style="width:50%">
+        <div class="container">
+          <h4><b>John Doe</b></h4>
+          <p>Architect & Engineer</p>
+        </div>
+      </div>
+      <button id="showData">Show Data</button>
+</body>
+<script>
+    const requestURL = 'https://api.github.com/users/monishgiri';
+    const xhr = new XMLHttpRequest();
+
+function fetchData(callback) {
+    console.log('heeloo');
+    
+    xhr.open('GET', requestURL);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const data = JSON.parse(this.responseText);
+            callback(data); // Pass the data to the callback function
+        }
+    };
+    xhr.send();
+}
+
+function handleData(data) {
+    console.log('Data:', data);
+    
+    document.querySelector('img').setAttribute('src',data.avatar_url);
+    document.querySelector('p').innerHTML = `Followers: ${data.followers}`;
+    document.querySelector('b').innerHTML = `${data.login}`
+    document.querySelector('.card').style.display = 'block'
+}
+
+document.querySelector('#showData').addEventListener('click',function(){
+    fetchData(handleData);
+})
+
+
+    
+</script>
+</html>
